@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import './App.css'
+import {StyledApp}  from './App.styled'
 import { Down } from './Components/Index';
 
 function App() {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <div className='App'>
+    <StyledApp>
       <Down Estado={open} setOpen={setOpen} />
-    </div>
+    </StyledApp>
   )
 }
 

@@ -1,5 +1,5 @@
 import { useRef} from 'react';
-import './Index.Down.css'
+import {Styledbotao, StyledItem, StyledLista} from './Index.Down.styled'
 
 interface IDown {
     Estado: boolean;
@@ -7,7 +7,7 @@ interface IDown {
 }
 
 export function Down({ Estado, setOpen }: IDown) {
-    const botaoRef = useRef<HTMLDivElement>(null);
+    const botaoRef = useRef<HTMLButtonElement>(null);
 
     const clicar_fora = (e: any) => {
         if (Estado && botaoRef.current && !botaoRef.current.contains(e.target)) {
@@ -16,17 +16,16 @@ export function Down({ Estado, setOpen }: IDown) {
     }
         window.addEventListener("click", clicar_fora);
         return (
-            <div className='botao' ref={botaoRef}>
+           <Styledbotao ref={botaoRef}>
             <button onClick={() => setOpen(!Estado)}>Selecione aluno</button>
             {Estado && (
-                <ul>
-                    <li onClick={() => console.log("Átila")}>Átila</li>
-                    <li onClick={() => console.log("Leonardo")}>Leonardo</li>
-                    <li onClick={() => console.log("Thais")}>Thais</li>
-                    <li onClick={() => console.log("Viviane")}>Viviane</li>
-                </ul>
-            )}
-        </div>
-            
+                <StyledLista>
+                    <StyledItem onClick={() => console.log("Átila")}>Átila</StyledItem>
+                    <StyledItem onClick={() => console.log("Leonardo")}>Leonardo</StyledItem>
+                    <StyledItem onClick={() => console.log("Thais")}>Thais</StyledItem>
+                    <StyledItem onClick={() => console.log("Viviane")}>Viviane</StyledItem>
+                </StyledLista>
+            )}            
+            </Styledbotao>
         );
 }
